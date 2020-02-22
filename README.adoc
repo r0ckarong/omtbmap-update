@@ -1,0 +1,9 @@
+= Update Script for OMTBMap
+
+This script serves to make updating the map file on a Garmin eTrex device easier than performing all the steps manually.
+
+The idea is that there will be updates to the website that you have to understand from the MD5 sum of the file and the new filesize of the map file. You can just run this script whenever you're curious (cron will work but might cause super unnecessary traffic on both ends if you don't end up syncing the map file).
+
+When you're using the "update" parameter ('-u'), the script assumes you're using an SD card directly connected to your computer to update. If you do not use the '-u' option, it will just refresh and build the map files (if necessary).
+
+WARNING: This script removes the OSM map files! If you need them for some reason, modify or not use this script!
