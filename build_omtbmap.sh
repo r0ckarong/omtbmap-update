@@ -43,8 +43,12 @@ if [ "$OLDSUM" == "$CHKSUM" ]; then
       rm -f $PWD/$FILE
       echo "[STATUS] Local file size mismatch. Downloading file..."
       http -d $REMOTE_FILE > $PWD/$FILE
-      LFS=$(wc -c $PWD/$FILE | awk '{print $1}' | tr -d '\r')
-      LFS=${LFS}
+      if [ -f $PWD/$FILE ]; then
+        LFS=$(wc -c $PWD/$FILE | awk '{print $1}' | tr -d '\r')
+        LFS=${LFS}
+      else
+        LFS=0
+      fi
     fi
 fi
 
