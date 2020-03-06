@@ -62,8 +62,8 @@ if [ -f $PWD/$FILE ]; then
     echo "[INFO] Remote file hashsum is: $CHKSUM"
     if [ "$VERSUM" == "$CHKSUM" ]; then
       echo "[STATUS] Local file up to date..."
-      ### Extracting archive and generate new artifacts
 
+      ### Extracting archive and generate new artifacts
       # Removing the old extracted files
       echo "[STATUS] Removing old artifacts..."
       rm -rf $DIRNAME
@@ -94,14 +94,14 @@ else
 fi
 
 ### Upload new map file to SD Card
-if [ -d $SD_LOCATION ]; then
-  echo "[INFO] SD card found..."
-else
-  echo "[ERROR] SD card not found. Aborting..."
-  exit
-fi
-
 if [ "$1" == "-u" ]; then
+  if [ -d $SD_LOCATION ]; then
+    echo "[INFO] SD card found..."
+  else
+    echo "[ERROR] SD card not found. Aborting..."
+    exit
+  fi
+
   echo "[STATUS] Removing old map file from SD card..."
   rm -f $SD_LOCATION/gmapsupp.img $SD_LOCATION/gmapsupp.img.md5
 
